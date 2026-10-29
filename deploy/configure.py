@@ -83,12 +83,16 @@ def main(path):
             "discord_proxy": "",
             "discord_command_register": True,
             "discord_activity_name": "",
-            "discord_allow_bot_messages": False,
+            # Bot messages reach the plugin, which lets through only the bots in OJOU_FRIEND_BOTS.
+            "discord_allow_bot_messages": True,
         },
     )
 
     runner = config["agent_runner"]["config"]
     runner["model"]["provider_id"] = "sonnet"
+    # Her persona (plugins/ojou_core/persona.md, installed by the plugin) instead of AstrBot's
+    # "helpful assistant"; AstrBot's extra safe-mode prompt is off at the owner's request.
+    runner["persona"].update(persona_id="claude-ojousama", safety_mode=False)
     # Drop old turns in one large chunk instead of one at a time: every trim changes the start of the
     # conversation and costs one full-price read, so trimming rarely keeps the cache warm.
     runner["compression"].update(max_turns=40, trim_turns=15, overflow_strategy="truncate_by_turns")

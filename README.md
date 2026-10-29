@@ -11,7 +11,8 @@ Claude-Ojouchan 是 [whale-chan-pre-agi](https://github.com/yohaneowo/whale-chan
 | `compose.yaml` | AstrBot（版本固定），後台只開在本機 |
 | `deploy/configure.py` | 把模型、Discord、對話長度等設定寫進 AstrBot 的 `cmd_config.json`，密鑰從環境變數來 |
 | `deploy/up.sh` | 在 VM 上用 Doppler 跑 `configure.py`，再啟動 AstrBot |
-| `plugins/ojou_core/` | 原文帳本（`data/ojou/archive/`）、每日花費上限（`data/ojou/usage/`）、暫時的人設 |
+| `plugins/ojou_core/` | 原文帳本（`data/ojou/archive/`）、每日花費上限（`data/ojou/usage/`） |
+| `plugins/ojou_core/persona.md` | 她的人設。插件啟動時寫進 AstrBot 的人格 `claude-ojousama`，`configure.py` 把它設成預設，並關掉 AstrBot 的安全模式 |
 
 ## 模型與花費
 
