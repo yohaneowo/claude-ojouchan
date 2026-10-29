@@ -1,0 +1,2 @@
+# Deployed on Linux: keep LF everywhere, including on Windows checkouts.
+* text=auto eol=lf
