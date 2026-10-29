@@ -1,0 +1,9 @@
+name: astrbot_plugin_ojou_core
+display_name: Ojouchan Core
+desc: Claude-Ojouchan 的核心：原文帐本、每日花费上限，以及之后的记忆与参与判断。
+version: v0.1.0
+author: yohaneowo
+repo: https://github.com/yohaneowo/claude-ojouchan
+support_platforms:
+  - discord
+astrbot_version: ">=4.29.3,<5"

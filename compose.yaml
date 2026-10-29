@@ -1,0 +1,20 @@
+services:
+  astrbot:
+    image: soulter/astrbot:v4.29.3
+    container_name: astrbot
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      # The dashboard stays on the VM; reach it through an SSH tunnel.
+      - "127.0.0.1:6185:6185"
+    environment:
+      TZ: Asia/Kuala_Lumpur
+      # Passed in by deploy/up.sh from Doppler; the provider config reads it as $ANTHROPIC_API_KEY.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OJOU_DAILY_BUDGET_USD: "2"
+      # The owner's Discord user ID: admin commands and budget alerts.
+      OJOU_OWNER_ID: ${OJOU_OWNER_ID:-}
+    volumes:
+      - ./data:/AstrBot/data
+      - ./plugins/ojou_core:/AstrBot/data/plugins/astrbot_plugin_ojou_core:ro
